@@ -1,221 +1,1355 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pesan Manis dari Indana</title>
-  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Comic Sans MS', cursive;
-      background: #ffeef8;
-      color: #b91c1c;
-      text-align: center;
-      padding: 40px;
-      overflow-x: hidden;
-    }
-    .container {
-      max-width: 500px;
-      margin: auto;
-      background: #fff0fa;
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      position: relative;
-      z-index: 2;
-    }
-    .container > div {
-      animation: fadeInUp 0.6s ease;
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .hidden { display: none; }
-    .btn {
-      background: #f472b6;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 12px;
-      margin: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      animation: pulse 2s infinite;
-      transition: transform 0.2s;
-    }
-    .btn:hover { background: #ec4899; }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    .shake { animation: shake 0.4s; }
-    @keyframes shake {
-      0% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      50% { transform: translateX(5px); }
-      75% { transform: translateX(-5px); }
-      100% { transform: translateX(0); }
-    }
-    .hearts {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 1;
-    }
-    .heart {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      background: url('https://emoji.slack-edge.com/T02FHE90J/heart/04297f7bbf93d78f.png') no-repeat center center;
-      background-size: contain;
-      animation: floatUp 6s linear infinite;
-      opacity: 0.7;
-    }
-    @keyframes floatUp {
-      0% { transform: translateY(100vh) scale(1); opacity: 1; }
-      100% { transform: translateY(-10vh) scale(0.5); opacity: 0; }
-    }
-    @keyframes floatDown {
-      from { transform: translateY(-10vh); opacity: 1; }
-      to { transform: translateY(100vh); opacity: 0; }
-    }
-    #end p {
-      font-family: 'Indie Flower', cursive;
-      font-size: 20px;
-    }
-  </style>
-</head>
-<body>
-  <audio autoplay loop>
-    <source src="https://example-files.online-convert.com/audio/mp3/example.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung pemutar audio.
-  </audio>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <div class="hearts" id="hearts"></div>
+    <!-- ✅ SEO & Branding -->
+    <title>Indana Zulfa | Fullstack Developer & UI/UX Enthusiast</title>
+    <meta
+      name="description"
+      content="Portfolio Indana Zulfa Silmi J - Fullstack Developer & UI/UX Enthusiast. Showcase of projects in web development, UI/UX design, and creative coding."
+    />
+    <meta name="author" content="Indana Zulfa Silmi J" />
+    <meta
+      name="keywords"
+      content="Indana Zulfa, portfolio, fullstack developer, UI/UX, web design, frontend, backend, programmer, Indonesia"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      property="og:title"
+      content="Indana Zulfa | Fullstack Developer & UI/UX"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio pekerjaan & project Indana Zulfa."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://via.placeholder.com/1200x630?text=Indana+Zulfa+Portfolio"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
 
-  <div class="container">
-    <img src="https://i.pinimg.com/736x/e4/93/72/e4937278218b86c1d3cb81e68c4798e2.jpg" alt="Kucing Gemas" style="width: 120px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin-bottom: 20px;">
-    <h2>Pesan Manis dari Indana buat sayangkuu Richat 💌</h2>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <div id="step1">
-      <p>Sayang... boleh gak aku curhat bentar?</p>
-      <button class="btn" onclick="nextStep('step2')">Lanjut</button>
-    </div>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-    <div id="step2" class="hidden">
-      <p>Kamu pernah gak sih tiba-tiba ngerasa kangen banget... padahal baru aja ngobrol? 😳</p>
-      <button class="btn" onclick="response('step2','yes')">Pernah banget 🥹</button>
-      <button class="btn" id="btn2no" onclick="ngambek('step2', 'btn2no', 'Haha, becanda ya?', 'Iya, tau deh kamu cuma bercanda 🥰', 'step3')">Ah lebay 😆</button>
-    </div>
+    <!-- Google Font Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <div id="step3" class="hidden">
-      <p>Kalo aku bilang... kamu itu hadiah terindah yang pernah aku dapet. Kamu percaya gak? 🎁</p>
-      <button class="btn" onclick="response('step3','yes')">Percaya kok 🥹</button>
-      <button class="btn" id="btn3no" onclick="ngambek('step3', 'btn3no', 'Ya ampun, becanda 😅', 'Iya deh, aku percaya kok! 😘', 'step4')">Enggak 😬</button>
-    </div>
+    <!-- ✅ Anti-FOUC: set tema lebih dulu (localStorage > system) -->
+    <script>
+      (function () {
+        try {
+          const stored = localStorage.getItem("theme");
+          const systemDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches;
+          if (stored === "dark" || (!stored && systemDark)) {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+        } catch (_) {}
+      })();
+    </script>
 
-    <div id="step4" class="hidden">
-      <p>Jadi... boleh gak aku jagain kamu terus? 🥺👉👈</p>
-      <button class="btn" onclick="nextStep('end')">Iya dong 🫶</button>
-      <button class="btn" id="btn4no" onclick="hilang('step4', 'btn4no', 'Iya deh, aku jagain kamu juga 😅', 'Iya deh, aku gak mau pergi kok! 😘', 'end')">Enggak 😤</button>
-    </div>
-
-    <div id="end" class="hidden">
-      <p>Makasih ya, sayang! Kamu itu luar biasa dan selalu bikin aku bahagia! 😍<br><br>
-      Aku gak bisa berhenti senyum kalau mikirin kamu! Aku bakal selalu jagain kamu, jangan khawatir 😘</p>
-      <img src="https://media.istockphoto.com/id/1262603312/id/vektor/karakter-pelukan-pasangan-romantis-dengan-konsep-happy-valentines-day-terisolasi-di-latar.jpg?s=612x612&w=0&k=20&c=fXMnEueUyQArdi_aAniovIpODTAmegyyVysJDvSnv3Q=" alt="Peluk" style="width: 150px; margin-top: 20px;">
-
-      <p style="margin-top: 20px; font-style: italic;">PS: Kalo kamu lagi sedih, ingat ya... kamu punya aku! Dan aku punya pelukan jarak jauh spesial buat kamu 🤗💖</p>
-      <button class="btn" onclick="alert('Awww! Peluk balik dari Richat diterima 🥰💞')">Peluk balik 🤗</button>
-    </div>
-  </div>
-
-  <div style="position: fixed; bottom: 10px; width: 100%; text-align: center; font-size: 20px; color: #f43f5e; animation: pulse 2s infinite;">
-    I 💗 U more than kamu suka ninja SS 🥰💞
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-  <script>
-    function nextStep(id) {
-      document.querySelectorAll('.container > div').forEach(div => div.classList.add('hidden'));
-      document.getElementById(id).classList.remove('hidden');
-    }
-
-    function response(step, type) {
-      const div = document.getElementById(step);
-      let msg = '';
-      if(step === 'step2' && type === 'yes') msg = "Hehe, aku juga gitu! Tiba-tiba kamu muncul di kepala aku dan... langsung senyum-senyum sendiri 😋";
-      if(step === 'step3' && type === 'yes') msg = "Yay! Terima kasih, sayang! Kamu tuh luar biasa banget deh 😘";
-      div.innerHTML = `<p>${msg}</p><button class='btn' onclick="nextStep('${step === 'step2' ? 'step3' : 'step4'}')">Lanjut</button>`;
-    }
-
-    function ngambek(stepId, btnId, newBtnText, newResponse, nextId) {
-      const btn = document.getElementById(btnId);
-      btn.classList.add("shake");
-      setTimeout(() => {
-        btn.classList.remove("shake");
-        if (!document.getElementById(`fix-${stepId}`)) {
-          const newBtn = document.createElement("button");
-          newBtn.className = "btn";
-          newBtn.id = `fix-${stepId}`;
-          newBtn.textContent = newBtnText;
-          newBtn.onclick = () => {
-            document.getElementById(stepId).innerHTML = `<p>${newResponse}</p><button class='btn' onclick=\"nextStep('${nextId}')\">Lanjut</button>`;
-          };
-          document.getElementById(stepId).appendChild(newBtn);
-        }
-      }, 300);
-    }
-
-    function hilang(stepId, btnId, newBtnText, newResponse, nextId) {
-      const btn = document.getElementById(btnId);
-      btn.style.transition = "opacity 0.6s";
-      btn.style.opacity = 0;
-      setTimeout(() => {
-        btn.style.display = "none";
-        const newBtn = document.createElement("button");
-        newBtn.className = "btn";
-        newBtn.textContent = newBtnText;
-        newBtn.onclick = () => {
-          document.getElementById(stepId).innerHTML = `<p>${newResponse}</p><button class='btn' onclick=\"nextStep('${nextId}')\">Lanjut</button>`;
-        };
-        document.getElementById(stepId).appendChild(newBtn);
-      }, 600);
-    }
-
-    const heartsContainer = document.getElementById('hearts');
-    const emojis = ['💖', '🌸', '🐱', '✨'];
-    setInterval(() => {
-      const el = document.createElement('span');
-      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      el.style.position = 'absolute';
-      el.style.left = Math.random() * 100 + 'vw';
-      el.style.top = '0';
-      el.style.fontSize = '24px';
-      el.style.animation = `floatDown ${3 + Math.random() * 3}s linear`;
-      heartsContainer.appendChild(el);
-      setTimeout(() => el.remove(), 6000);
-    }, 800);
-
-    const observer = new MutationObserver(() => {
-      if (!document.getElementById('end').classList.contains('hidden')) {
-        confetti({
-          particleCount: 200,
-          spread: 70,
-          origin: { y: 0.6 }
-        });
-        setTimeout(() => {
-          alert('💬 Indana: Aku sayang kamu banget loh! 💖');
-        }, 1000);
+    <style>
+      :root {
+        --bg-body: #ffffff;
       }
-    });
-    observer.observe(document.getElementById('end'), { attributes: true });
-  </script>
-</body>
+      html.dark {
+        --bg-body: #000000;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: var(--bg-body);
+        z-index: -20;
+      }
+
+      /* floating balloons */
+      .balloon {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 30% 30%,
+          rgba(236, 72, 153, 0.6),
+          rgba(147, 51, 234, 0.3)
+        );
+        animation: float 20s infinite ease-in-out;
+      }
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) scale(0.8);
+          opacity: 0;
+        }
+        20% {
+          opacity: 1;
+        }
+        50% {
+          transform: translateY(50vh) scale(1);
+        }
+        80% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-20vh) scale(0.8);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-transparent text-gray-900 dark:text-gray-100 transition-colors duration-500"
+  >
+    <!-- Background Container -->
+    <div id="bg-container" class="fixed inset-0 -z-10 overflow-hidden"></div>
+
+    <!-- Navbar -->
+    <header
+      id="siteHeader"
+      class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
+    >
+      <div class="max-w-4xl mx-auto flex justify-between items-center p-4">
+        <h1 class="text-xl font-bold text-pink-600 dark:text-pink-500">
+          MyPortfolio
+        </h1>
+
+        <nav class="hidden md:flex gap-6">
+          <a
+            href="#home"
+            class="hover:text-pink-600 dark:hover:text-pink-400 text-gray-700 dark:text-gray-300"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="hover:text-pink-600 dark:hover:text-pink-400 text-gray-700 dark:text-gray-300"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="hover:text-pink-600 dark:hover:text-pink-400 text-gray-700 dark:text-gray-300"
+            >Skills</a
+          >
+          <a
+            href="#projects"
+            class="hover:text-pink-600 dark:hover:text-pink-400 text-gray-700 dark:text-gray-300"
+            >Projects</a
+          >
+          <a
+            href="#contact"
+            class="hover:text-pink-600 dark:hover:text-pink-400 text-gray-700 dark:text-gray-300"
+            >Contact</a
+          >
+        </nav>
+
+        <!-- ✅ Theme Toggle -->
+        <button
+          id="themeToggle"
+          aria-label="Toggle color mode"
+          class="ml-4 inline-flex items-center justify-center w-10 h-10 rounded-xl border border-gray-300 dark:border-gray-700 hover:border-pink-500 hover:text-pink-500 transition"
+        >
+          <i class="fa-solid fa-sun text-lg block dark:hidden"></i>
+          <i class="fa-solid fa-moon text-lg hidden dark:block"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="min-h-screen flex flex-col items-center justify-center pt-20 text-center space-y-6 scroll-mt-20"
+    >
+      <h2
+        class="text-4xl md:text-6xl font-extrabold text-pink-600 dark:text-pink-500"
+      >
+        Hi, I’m Indana Zulfa Silmi J
+      </h2>
+      <p class="text-lg md:text-2xl text-gray-600 dark:text-gray-300">
+        Fullstack Developer | UI/UX Enthusiast
+      </p>
+      <div class="flex justify-center gap-4">
+        <a
+          href="#projects"
+          class="px-6 py-2 bg-pink-600 text-white rounded-xl shadow-lg shadow-pink-500/30 hover:shadow-pink-500/50 transition"
+        >
+          View Projects
+        </a>
+        <a
+          href="#contact"
+          class="px-6 py-2 border border-pink-600 text-gray-800 dark:text-gray-200 rounded-xl hover:bg-pink-50/10 transition"
+        >
+          Contact Me
+        </a>
+      </div>
+
+      <!-- Social Media Icons -->
+      <div class="flex justify-center gap-6 mt-6 text-2xl">
+        <a
+          href="#"
+          class="text-pink-600 dark:text-pink-500 hover:text-pink-500 dark:hover:text-pink-400"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a
+          href="#"
+          class="text-pink-600 dark:text-pink-500 hover:text-pink-500 dark:hover:text-pink-400"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a
+          href="#"
+          class="text-pink-600 dark:text-pink-500 hover:text-pink-500 dark:hover:text-pink-400"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a
+          href="#"
+          class="text-pink-600 dark:text-pink-500 hover:text-pink-500 dark:hover:text-pink-400"
+          ><i class="fab fa-twitter"></i
+        ></a>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section
+      id="about"
+      class="max-w-4xl mx-auto py-20 px-6 text-center scroll-mt-20"
+    >
+      <h3 class="text-3xl font-bold mb-6 text-pink-600 dark:text-pink-500">
+        About Me
+      </h3>
+      <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">
+        Lulusan Teknik Informatika yang memiliki nilai baik, berdedikasi, dan
+        berkomitmen tinggi dalam menciptakan solusi teknologi inovatif dan
+        efisien. Memiliki keahlian dalam pengembangan web, manajemen database,
+        dan analisis data. Selain itu, juga memiliki pengalaman dalam bidang
+        administrasi.
+      </p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="max-w-4xl mx-auto py-20 px-6 scroll-mt-20">
+      <h3
+        class="text-3xl font-bold mb-10 text-center text-pink-600 dark:text-pink-500"
+      >
+        Skills
+      </h3>
+      <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-6 text-center">
+        <div
+          class="p-6 bg-white/70 dark:bg-black/50 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-md transition group"
+        >
+          <i
+            class="fas fa-laptop-code text-3xl text-pink-600 dark:text-pink-500 mb-4 transition-transform group-hover:scale-110"
+          ></i>
+          <h4 class="font-semibold text-xl mb-3">Frontend</h4>
+          <p class="text-sm text-gray-700 dark:text-gray-300">
+            HTML, CSS, JavaScript, React, Tailwind
+          </p>
+        </div>
+        <div
+          class="p-6 bg-white/70 dark:bg-black/50 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-md transition group"
+        >
+          <i
+            class="fas fa-server text-3xl text-pink-600 dark:text-pink-500 mb-4 transition-transform group-hover:scale-110"
+          ></i>
+          <h4 class="font-semibold text-xl mb-3">Backend</h4>
+          <p class="text-sm text-gray-700 dark:text-gray-300">
+            Node.js, Express, Python, PHP
+          </p>
+        </div>
+        <div
+          class="p-6 bg-white/70 dark:bg-black/50 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-md transition group"
+        >
+          <i
+            class="fas fa-database text-3xl text-pink-600 dark:text-pink-500 mb-4 transition-transform group-hover:scale-110"
+          ></i>
+          <h4 class="font-semibold text-xl mb-3">Database</h4>
+          <p class="text-sm text-gray-700 dark:text-gray-300">
+            MySQL, MongoDB, PostgreSQL
+          </p>
+        </div>
+        <div
+          class="p-6 bg-white/70 dark:bg-black/50 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-md transition group"
+        >
+          <i
+            class="fas fa-tools text-3xl text-pink-600 dark:text-pink-500 mb-4 transition-transform group-hover:scale-110"
+          ></i>
+          <h4 class="font-semibold text-xl mb-3">Tools</h4>
+          <p class="text-sm text-gray-700 dark:text-gray-300">
+            Git, Docker, Linux
+          </p>
+        </div>
+        <div
+          class="p-6 bg-white/70 dark:bg-black/50 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-md transition group"
+        >
+          <i
+            class="fab fa-microsoft text-3xl text-pink-600 dark:text-pink-500 mb-4 transition-transform group-hover:scale-110"
+          ></i>
+          <h4 class="font-semibold text-xl mb-3">Microsoft</h4>
+          <p class="text-sm text-gray-700 dark:text-gray-300">
+            Excel, Word, PowerPoint
+          </p>
+        </div>
+        <div
+          class="p-6 bg-white/70 dark:bg-black/50 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-md transition group"
+        >
+          <i
+            class="fa-solid fa-wand-magic-sparkles text-3xl text-pink-600 dark:text-pink-500 mb-4 transition-transform group-hover:scale-110"
+          ></i>
+          <h4 class="font-semibold text-xl mb-3">Editing</h4>
+          <p class="text-sm text-gray-700 dark:text-gray-300">
+            Canva, Coreldraw, Figma
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="max-w-4xl mx-auto py-20 px-6 scroll-mt-20">
+      <h3
+        class="text-3xl font-bold mb-10 text-center text-pink-600 dark:text-pink-500"
+      >
+        Experience
+      </h3>
+      <div
+        class="relative border-l border-pink-500/30 dark:border-pink-500/40 ml-4 space-y-10"
+      >
+        <div class="relative pl-8 fade-left opacity-0 -translate-x-8">
+          <div
+            class="absolute -left-3 top-1 w-6 h-6 rounded-full bg-pink-600 dark:bg-pink-500 border-4 border-white dark:border-black"
+          ></div>
+          <h4 class="text-xl font-semibold">Fullstack Developer Intern</h4>
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            PT Teknologi Inovasi • 2024
+          </p>
+          <p class="mt-2 text-gray-700 dark:text-gray-300 text-sm">
+            Mengembangkan aplikasi e-commerce dengan React, Node.js, dan
+            MongoDB.
+          </p>
+        </div>
+        <div class="relative pl-8 fade-left opacity-0 -translate-x-8">
+          <div
+            class="absolute -left-3 top-1 w-6 h-6 rounded-full bg-pink-600 dark:bg-pink-500 border-4 border-white dark:border-black"
+          ></div>
+          <h4 class="text-xl font-semibold">Freelance Web Developer</h4>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Remote • 2023</p>
+          <p class="mt-2 text-gray-700 dark:text-gray-300 text-sm">
+            Landing page modern untuk UMKM dengan Tailwind CSS & Next.js.
+          </p>
+        </div>
+        <div class="relative pl-8 fade-left opacity-0 -translate-x-8">
+          <div
+            class="absolute -left-3 top-1 w-6 h-6 rounded-full bg-pink-600 dark:bg-pink-500 border-4 border-white dark:border-black"
+          ></div>
+          <h4 class="text-xl font-semibold">UI/UX Designer</h4>
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            Kampus Project • 2022
+          </p>
+          <p class="mt-2 text-gray-700 dark:text-gray-300 text-sm">
+            Mendesain prototype aplikasi mobile menggunakan Figma.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="max-w-4xl mx-auto py-20 px-6 scroll-mt-20">
+      <h3
+        class="text-3xl font-bold mb-10 text-center text-pink-600 dark:text-pink-500"
+      >
+        Education
+      </h3>
+
+      <h4
+        class="text-xl font-semibold text-pink-600 dark:text-pink-400 mb-6 text-right"
+      >
+        Formal Education
+      </h4>
+      <div
+        class="relative border-r border-pink-500/30 dark:border-pink-500/40 mr-4 space-y-10 mb-12"
+      >
+        <div
+          class="relative pr-8 text-right fade-right opacity-0 translate-x-8"
+        >
+          <div
+            class="absolute -right-3 top-1 w-6 h-6 rounded-full bg-pink-600 dark:bg-pink-500 border-4 border-white dark:border-black"
+          ></div>
+          <h4 class="text-xl font-semibold">Teknik Informatika</h4>
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            Universitas XYZ • 2019 - 2023
+          </p>
+          <p class="mt-2 text-gray-700 dark:text-gray-300 text-sm">
+            Fokus pada pengembangan aplikasi web, database, dan desain UI/UX.
+          </p>
+        </div>
+
+        <div
+          class="relative pr-8 text-right fade-right opacity-0 translate-x-8"
+        >
+          <div
+            class="absolute -right-3 top-1 w-6 h-6 rounded-full bg-pink-600 dark:bg-pink-500 border-4 border-white dark:border-black"
+          ></div>
+          <h4 class="text-xl font-semibold">SMA Negeri 1 Kota</h4>
+          <p class="text-sm text-gray-500 dark:text-gray-400">2016 - 2019</p>
+          <p class="mt-2 text-gray-700 dark:text-gray-300 text-sm">
+            Jurusan IPA, aktif di organisasi dan lomba IT.
+          </p>
+        </div>
+      </div>
+
+      <h4
+        class="text-xl font-semibold text-pink-600 dark:text-pink-400 mb-6 text-right"
+      >
+        Non-Formal Education
+      </h4>
+      <div
+        class="relative border-r border-pink-500/30 dark:border-pink-500/40 mr-4 space-y-10"
+      >
+        <div
+          class="relative pr-8 text-right fade-right opacity-0 translate-x-8"
+        >
+          <div
+            class="absolute -right-3 top-1 w-6 h-6 rounded-full bg-pink-600 dark:bg-pink-500 border-4 border-white dark:border-black"
+          ></div>
+          <h4 class="text-xl font-semibold">Fullstack Web Bootcamp</h4>
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            Online Course • 2022
+          </p>
+          <p class="mt-2 text-gray-700 dark:text-gray-300 text-sm">
+            Belajar MERN stack dan deployment aplikasi.
+          </p>
+        </div>
+
+        <div
+          class="relative pr-8 text-right fade-right opacity-0 translate-x-8"
+        >
+          <div
+            class="absolute -right-3 top-1 w-6 h-6 rounded-full bg-pink-600 dark:bg-pink-500 border-4 border-white dark:border-black"
+          ></div>
+          <h4 class="text-xl font-semibold">UI/UX Workshop</h4>
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            Design Community • 2021
+          </p>
+          <p class="mt-2 text-gray-700 dark:text-gray-300 text-sm">
+            Dasar desain pengalaman pengguna dengan Figma.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects" class="max-w-4xl mx-auto py-20 px-6 scroll-mt-20">
+      <div class="text-center">
+        <h3
+          class="text-3xl font-bold mb-10 text-center text-pink-600 dark:text-pink-500"
+        >
+          My Projects
+        </h3>
+
+        <!-- Filter Tabs -->
+        <div
+          id="project-filters"
+          class="flex justify-center gap-4 mb-8 flex-wrap"
+        >
+          <button
+            class="filter-btn px-4 py-2 rounded-xl bg-pink-600 text-white shadow hover:bg-pink-500 active"
+            data-filter="all"
+          >
+            All
+          </button>
+          <button
+            class="filter-btn px-4 py-2 rounded-xl bg-white/70 dark:bg-black/50 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 hover:bg-pink-500/20"
+            data-filter="frontend"
+          >
+            Frontend
+          </button>
+          <button
+            class="filter-btn px-4 py-2 rounded-xl bg-white/70 dark:bg-black/50 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 hover:bg-pink-500/20"
+            data-filter="backend"
+          >
+            Backend
+          </button>
+          <button
+            class="filter-btn px-4 py-2 rounded-xl bg-white/70 dark:bg-black/50 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 hover:bg-pink-500/20"
+            data-filter="fullstack"
+          >
+            Fullstack
+          </button>
+          <button
+            class="filter-btn px-4 py-2 rounded-xl bg-white/70 dark:bg-black/50 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-700 hover:bg-pink-500/20"
+            data-filter="design"
+          >
+            Design
+          </button>
+        </div>
+
+        <!-- Grid Projects -->
+        <div id="project-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Cards generated by JS -->
+        </div>
+
+        <button
+          id="toggleProjectsBtn"
+          class="mt-10 px-6 py-2 text-white bg-pink-600 rounded-xl shadow hover:bg-pink-500 transition-all"
+        >
+          Show More ↓
+        </button>
+      </div>
+    </section>
+
+    <!-- Project Detail Modal -->
+    <div
+      id="projectModal"
+      class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4"
+    >
+      <div
+        class="bg-white/90 dark:bg-black/90 border border-gray-200 dark:border-gray-800 rounded-2xl max-w-3xl w-full mx-auto p-6 relative max-h-[90vh] overflow-y-auto"
+      >
+        <div class="relative mb-4">
+          <img
+            id="modalImage"
+            src=""
+            alt="Screenshot"
+            class="w-full rounded-xl shadow-lg aspect-video object-cover transition-opacity duration-500 opacity-0"
+          />
+
+          <!-- Close Button -->
+          <button
+            onclick="closeModal()"
+            aria-label="Close modal"
+            tabindex="0"
+            class="absolute top-2 right-2 z-20 text-gray-600 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-500 transition text-2xl bg-white/80 dark:bg-black rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-pink-400"
+          >
+            &times;
+          </button>
+
+          <!-- Prev Button -->
+          <button
+            onclick="prevImage()"
+            aria-label="Previous image"
+            tabindex="0"
+            class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/60 p-2 rounded-full text-white hover:bg-pink-500/70 transition focus:outline-none focus:ring-2 focus:ring-pink-400"
+          >
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+
+          <!-- Next Button -->
+          <button
+            onclick="nextImage()"
+            aria-label="Next image"
+            tabindex="0"
+            class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/60 p-2 rounded-full text-white hover:bg-pink-500/70 transition focus:outline-none focus:ring-2 focus:ring-pink-400"
+          >
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <!-- Dots -->
+        <div id="modalDots" class="flex justify-center gap-2 mb-6"></div>
+
+        <!-- Title -->
+        <h3
+          id="modalTitle"
+          class="text-2xl font-bold text-pink-600 dark:text-pink-500 mb-3"
+        ></h3>
+
+        <!-- Description -->
+        <p
+          id="modalDesc"
+          class="text-gray-700 dark:text-gray-300 mb-4 text-sm leading-relaxed"
+        ></p>
+
+        <!-- Tech Stack -->
+        <div class="mb-4">
+          <h4 class="text-pink-600 dark:text-pink-400 font-semibold mb-2">
+            Tech Stack
+          </h4>
+          <ul id="modalTech" class="flex flex-wrap gap-2 text-sm"></ul>
+        </div>
+
+        <!-- Features -->
+        <div class="mb-6">
+          <h4 class="text-pink-600 dark:text-pink-400 font-semibold mb-2">
+            Key Features
+          </h4>
+          <ul
+            id="modalFeatures"
+            class="list-disc list-inside text-gray-700 dark:text-gray-300 text-sm space-y-1"
+          ></ul>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex gap-4 flex-wrap">
+          <a
+            id="modalDemo"
+            href="#"
+            target="_blank"
+            aria-label="Demo"
+            tabindex="0"
+            class="px-5 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-white hover:border-pink-500 hover:text-pink-600 dark:hover:text-pink-400 transition focus:outline-none focus:ring-2 focus:ring-pink-400"
+          >
+            <i class="fa-solid fa-link mr-2"></i> Demo
+          </a>
+          <a
+            id="modalGithub"
+            href="#"
+            target="_blank"
+            aria-label="GitHub"
+            tabindex="0"
+            class="px-5 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-white hover:border-pink-500 hover:text-pink-600 dark:hover:text-pink-400 transition focus:outline-none focus:ring-2 focus:ring-pink-400"
+          >
+            <i class="fa-brands fa-github mr-2"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Certificates Section -->
+    <section
+      id="certificates"
+      class="max-w-5xl mx-auto py-20 px-6 scroll-mt-20"
+    >
+      <h3
+        class="text-3xl font-bold mb-10 text-center text-pink-600 dark:text-pink-500"
+      >
+        Certificates & Achievements
+      </h3>
+
+      <!-- Grid -->
+      <div id="certGrid" class="grid md:grid-cols-3 gap-6"></div>
+
+      <!-- Show More/Less -->
+      <div class="text-center mt-6">
+        <button
+          id="toggleCerts"
+          class="px-6 py-2 rounded-lg bg-pink-600 text-white hover:bg-pink-500 transition"
+        >
+          Show More
+        </button>
+      </div>
+    </section>
+
+    <!-- Certificate Modal -->
+
+    <div
+      id="certModal"
+      class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4 transition-opacity duration-300 opacity-0 scale-95"
+    >
+      <div
+        class="bg-black/90 border border-gray-800 rounded-2xl max-w-3xl w-full mx-auto p-6 relative transform transition-all duration-300 scale-95"
+      >
+        <!-- Close -->
+        <button
+          onclick="closeCertModal()"
+          aria-label="Close Modal"
+          class="absolute top-4 right-4 text-gray-400 hover:text-pink-500 transition text-2xl z-10"
+        >
+          &times;
+        </button>
+
+        <!-- Image -->
+        <div class="relative">
+          <img
+            id="certModalImage"
+            src=""
+            alt="Certificate"
+            class="w-full max-h-[80vh] object-contain rounded-xl shadow-lg"
+          />
+
+          <!-- Prev -->
+          <button
+            onclick="prevCert()"
+            class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 p-2 rounded-full text-white hover:bg-pink-500/70 transition"
+          >
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <!-- Next -->
+          <button
+            onclick="nextCert()"
+            class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 p-2 rounded-full text-white hover:bg-pink-500/70 transition"
+          >
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <!-- Title -->
+        <h4
+          id="certModalTitle"
+          class="text-center mt-4 text-lg font-semibold text-pink-400"
+        ></h4>
+
+        <!-- Dots -->
+        <div id="certDots" class="flex justify-center mt-4 gap-2"></div>
+      </div>
+    </div>
+
+    <script>
+      // Data sertifikat
+      const allCerts = [
+        {
+          img: "https://via.placeholder.com/1280x720?text=Fullstack+Bootcamp",
+          title: "Fullstack Bootcamp",
+        },
+        {
+          img: "https://via.placeholder.com/1280x720?text=UI%2FUX+Workshop",
+          title: "UI/UX Workshop",
+        },
+        {
+          img: "https://via.placeholder.com/1280x720?text=Hackathon+Winner",
+          title: "Hackathon Winner",
+        },
+        {
+          img: "https://via.placeholder.com/1280x720?text=React+Course",
+          title: "React Course",
+        },
+        {
+          img: "https://via.placeholder.com/1280x720?text=Tailwind+Workshop",
+          title: "Tailwind Workshop",
+        },
+        {
+          img: "https://via.placeholder.com/1280x720?text=Cloud+Certification",
+          title: "Cloud Certification",
+        },
+        {
+          img: "https://via.placeholder.com/1280x720?text=Cyber+Security",
+          title: "Cyber Security",
+        },
+        {
+          img: "https://via.placeholder.com/1280x720?text=Data+Science",
+          title: "Data Science",
+        },
+      ];
+
+      let showAll = false;
+
+      // Render grid sertifikat dengan animasi masuk
+      function renderCertGrid() {
+        const grid = document.getElementById("certGrid");
+        grid.innerHTML = "";
+
+        const certsToShow = showAll ? allCerts : allCerts.slice(0, 6);
+
+        certsToShow.forEach((cert, index) => {
+          const card = document.createElement("div");
+          card.className =
+            "relative group rounded-xl overflow-hidden shadow-md hover:shadow-pink-500/30 transition opacity-0 translate-y-6";
+
+          card.innerHTML = `
+      <img src="${cert.img}" alt="${cert.title}" 
+        class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent 
+        flex flex-col items-center justify-end opacity-0 group-hover:opacity-100 transition duration-500 p-6">
+        <h4 class="text-lg font-medium text-white mb-3">${cert.title}</h4>
+        <button onclick="openCertModal(${allCerts.indexOf(cert)})"
+          class="px-4 py-1.5 rounded-lg border border-white/30 text-white text-sm hover:border-pink-500 hover:text-pink-400 transition">
+          View Certificate
+        </button>
+      </div>
+    `;
+
+          grid.appendChild(card);
+
+          // animasi masuk (staggered)
+          setTimeout(() => {
+            card.classList.remove("opacity-0", "translate-y-6");
+            card.classList.add("opacity-100", "translate-y-0");
+          }, index * 120);
+        });
+
+        // Update tombol
+        document.getElementById("toggleCerts").innerText = showAll
+          ? "Show Less ↑"
+          : "Show More ↓";
+      }
+
+      // Handle toggle dengan animasi keluar
+      document.getElementById("toggleCerts").addEventListener("click", () => {
+        const grid = document.getElementById("certGrid");
+        const cards = Array.from(grid.children);
+
+        // kasih animasi keluar dulu
+        cards.forEach((card, i) => {
+          setTimeout(() => {
+            card.classList.add("opacity-0", "translate-y-6");
+          }, i * 80);
+        });
+
+        // setelah animasi selesai, baru ubah state & render ulang
+        setTimeout(() => {
+          showAll = !showAll;
+          renderCertGrid();
+        }, cards.length * 80 + 300); // 300ms buffer
+      });
+
+      // Initial render
+      renderCertGrid();
+
+      // Modal functions
+      function openCertModal(index) {
+        currentCertIndex = index;
+        updateCertModal();
+        document.getElementById("certModal").classList.remove("hidden");
+        document.getElementById("certModal").classList.add("flex");
+      }
+
+      function updateCertModal() {
+        const cert = allCerts[currentCertIndex];
+        document.getElementById("certModalImage").src = cert.img;
+        document.getElementById("certModalTitle").innerText = cert.title;
+        renderCertDots();
+      }
+
+      function closeCertModal() {
+        document.getElementById("certModal").classList.add("hidden");
+        document.getElementById("certModal").classList.remove("flex");
+      }
+
+      function nextCert() {
+        currentCertIndex = (currentCertIndex + 1) % allCerts.length;
+        updateCertModal();
+      }
+
+      function prevCert() {
+        currentCertIndex =
+          (currentCertIndex - 1 + allCerts.length) % allCerts.length;
+        updateCertModal();
+      }
+
+      // Dots indicator
+      function renderCertDots() {
+        const dotsContainer = document.getElementById("certDots");
+        dotsContainer.innerHTML = "";
+        allCerts.forEach((_, i) => {
+          const dot = document.createElement("button");
+          dot.className = `w-3 h-3 rounded-full ${
+            i === currentCertIndex ? "bg-pink-500" : "bg-gray-500/50"
+          } transition`;
+          dot.onclick = () => {
+            currentCertIndex = i;
+            updateCertModal();
+          };
+          dotsContainer.appendChild(dot);
+        });
+      }
+
+      // Klik luar modal → close
+      document.getElementById("certModal").addEventListener("click", (e) => {
+        if (e.target === e.currentTarget) closeCertModal();
+      });
+
+      // ESC/Arrow navigation
+      document.addEventListener("keydown", (e) => {
+        const modal = document.getElementById("certModal");
+        if (modal.classList.contains("hidden")) return;
+
+        if (e.key === "Escape") closeCertModal();
+        if (e.key === "ArrowRight") nextCert();
+        if (e.key === "ArrowLeft") prevCert();
+      });
+
+      //animasi modal
+      function openCertModal(index) {
+        currentCertIndex = index;
+        updateCertModal();
+
+        const modal = document.getElementById("certModal");
+        modal.classList.remove("hidden");
+        setTimeout(() => {
+          modal.classList.add("flex");
+          modal.classList.remove("opacity-0", "scale-95");
+          modal.classList.add("opacity-100", "scale-100");
+        }, 10);
+      }
+
+      function closeCertModal() {
+        const modal = document.getElementById("certModal");
+        modal.classList.remove("opacity-100", "scale-100");
+        modal.classList.add("opacity-0", "scale-95");
+        setTimeout(() => {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        }, 300); // sesuai duration-300
+      }
+    </script>
+
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="max-w-4xl mx-auto py-20 px-6 text-center scroll-mt-20"
+    >
+      <h3 class="text-3xl font-bold mb-6 text-pink-600 dark:text-pink-500">
+        Get In Touch
+      </h3>
+
+      <form
+        id="contactForm"
+        action="https://formsubmit.co/6a70f4beba7968fb19b1d1cf7e7669fb"
+        method="POST"
+        class="space-y-4"
+      >
+        <input
+          type="text"
+          name="name"
+          placeholder="Nama"
+          required
+          class="w-full border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-black/50 text-gray-900 dark:text-gray-200 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500/50"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+          class="w-full border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-black/50 text-gray-900 dark:text-gray-200 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500/50"
+        />
+        <textarea
+          name="message"
+          placeholder="Pesan"
+          rows="4"
+          required
+          class="w-full border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-black/50 text-gray-900 dark:text-gray-200 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500/50"
+        ></textarea>
+
+        <!-- biar tidak redirect -->
+        <input type="hidden" name="_captcha" value="false" />
+
+        <button
+          type="submit"
+          class="px-6 py-2 bg-pink-600 text-white rounded-xl shadow hover:bg-pink-500"
+        >
+          Send
+        </button>
+      </form>
+
+      <!-- tempat notif -->
+      <p id="formMessage" class="mt-4 text-green-400 font-medium hidden">
+        Pesan terkirim!
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="bg-gray-50 dark:bg-black/60 text-gray-600 dark:text-gray-400 py-6 text-center"
+    >
+      <p>© 2025 Indana Zulfa Silmi J. All rights reserved.</p>
+      <div class="flex justify-center gap-4 mt-2 text-lg">
+        <a href="#" class="hover:text-pink-600 dark:hover:text-pink-500"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a href="#" class="hover:text-pink-600 dark:hover:text-pink-500"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a href="#" class="hover:text-pink-600 dark:hover:text-pink-500"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="#" class="hover:text-pink-600 dark:hover:text-pink-500"
+          ><i class="fab fa-twitter"></i
+        ></a>
+      </div>
+    </footer>
+
+    <!-- =========================
+         Scripts (semua di bawah)
+    ========================== -->
+    <script>
+      tailwind.config = { darkMode: "class" };
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle("dark");
+      }
+      // ✅ Theme Toggle
+      const themeBtn = document.getElementById("themeToggle");
+      function applyTheme(next) {
+        const root = document.documentElement;
+        if (next === "dark") {
+          root.classList.add("dark");
+        } else {
+          root.classList.remove("dark");
+        }
+        localStorage.setItem("theme", next);
+      }
+      themeBtn.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.contains("dark");
+        applyTheme(isDark ? "light" : "dark");
+      });
+
+      // ✅ Background balloons
+      (function makeBalloons() {
+        const bg = document.getElementById("bg-container");
+        for (let i = 0; i < 15; i++) {
+          const b = document.createElement("div");
+          b.classList.add("balloon");
+          const size = Math.random() * 120 + 40;
+          b.style.width = `${size}px`;
+          b.style.height = `${size}px`;
+          b.style.left = `${Math.random() * 100}vw`;
+          b.style.animationDuration = `${15 + Math.random() * 10}s`;
+          b.style.animationDelay = `${Math.random() * 20}s`;
+          bg.appendChild(b);
+        }
+      })();
+
+      // ✅ Navbar scroll effect (light & dark aware)
+      window.addEventListener("scroll", () => {
+        const header = document.getElementById("siteHeader");
+        if (window.scrollY > 50) {
+          header.classList.add("backdrop-blur", "border-b", "shadow-sm");
+          header.classList.add("bg-white/60", "dark:bg-black/60");
+          header.classList.add("border-gray-200", "dark:border-gray-800");
+        } else {
+          header.classList.remove("backdrop-blur", "border-b", "shadow-sm");
+          header.classList.remove("bg-white/60", "dark:bg-black/60");
+          header.classList.remove("border-gray-200", "dark:border-gray-800");
+        }
+      });
+
+      // ✅ Intersection Observer (fade left/right)
+      const faders = document.querySelectorAll(".fade-left, .fade-right");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const items = entry.target.parentElement.querySelectorAll(
+              ".fade-left, .fade-right"
+            );
+            items.forEach((item, i) => {
+              setTimeout(() => {
+                item.classList.remove(
+                  "opacity-0",
+                  "-translate-x-8",
+                  "translate-x-8"
+                );
+                item.classList.add(
+                  "transition-all",
+                  "duration-700",
+                  "ease-out",
+                  "opacity-100",
+                  "translate-x-0"
+                );
+              }, i * 200);
+            });
+            observer.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.2 }
+      );
+      faders.forEach((el) => observer.observe(el));
+
+      // ✅ Projects data & rendering
+      const projects = [
+        {
+          title: "E-Commerce Website",
+          images: ["Screenshot.png", "Screenshot1.png", "Screenshot2.png"],
+          demo: "#",
+          github: "#",
+          category: "fullstack",
+          desc: "Platform e-commerce modern dengan fitur login, keranjang, dan pembayaran.",
+          tech: ["React.js", "Node.js", "MongoDB", "TailwindCSS"],
+          features: [
+            "Login & Registrasi",
+            "Manajemen Produk (CRUD)",
+            "Keranjang & Checkout",
+            "Riwayat Pesanan",
+          ],
+        },
+        {
+          title: "To-Do App",
+          images: ["https://via.placeholder.com/1280x720?text=ToDo+App"],
+          demo: "#",
+          github: "#",
+          category: "frontend",
+          desc: "Aplikasi daftar tugas sederhana dan cepat.",
+          tech: ["Vite", "React", "LocalStorage"],
+          features: ["Tambah/Hapus/Tandai", "Persistensi data", "UI minimalis"],
+        },
+        {
+          title: "Blog Platform",
+          images: ["https://via.placeholder.com/1280x720?text=Blog"],
+          demo: "#",
+          github: "#",
+          category: "backend",
+          desc: "REST API blog dengan autentikasi JWT.",
+          tech: ["Node.js", "Express", "PostgreSQL"],
+          features: ["Auth JWT", "CRUD artikel", "Komentar & like"],
+        },
+        {
+          title: "Portfolio Website",
+          images: ["https://via.placeholder.com/1280x720?text=Portfolio"],
+          demo: "#",
+          github: "#",
+          category: "design",
+          desc: "Situs portfolio statis dengan animasi halus.",
+          tech: ["HTML", "TailwindCSS", "Vanilla JS"],
+          features: ["Animasi scroll", "Responsive", "Aksesibilitas dasar"],
+        },
+        {
+          title: "Portfolio Website",
+          images: ["https://via.placeholder.com/1280x720?text=Portfolio"],
+          demo: "#",
+          github: "#",
+          category: "design",
+          desc: "Situs portfolio statis dengan animasi halus.",
+          tech: ["HTML", "TailwindCSS", "Vanilla JS"],
+          features: ["Animasi scroll", "Responsive", "Aksesibilitas dasar"],
+        },
+        {
+          title: "Portfolio Website",
+          images: ["https://via.placeholder.com/1280x720?text=Portfolio"],
+          demo: "#",
+          github: "#",
+          category: "design",
+          desc: "Situs portfolio statis dengan animasi halus.",
+          tech: ["HTML", "TailwindCSS", "Vanilla JS"],
+          features: ["Animasi scroll", "Responsive", "Aksesibilitas dasar"],
+        },
+        {
+          title: "Portfolio Website",
+          images: ["https://via.placeholder.com/1280x720?text=Portfolio"],
+          demo: "#",
+          github: "#",
+          category: "design",
+          desc: "Situs portfolio statis dengan animasi halus.",
+          tech: ["HTML", "TailwindCSS", "Vanilla JS"],
+          features: ["Animasi scroll", "Responsive", "Aksesibilitas dasar"],
+        },
+      ];
+
+      const projectGrid = document.getElementById("project-grid");
+      const SHOW_LIMIT = 6; // kalau project > 6, tombol Show More akan berfungsi
+
+      function renderProjects(filter = "all", limit = Infinity) {
+        projectGrid.innerHTML = "";
+        const list = projects.filter(
+          (p) =>
+            filter === "all" ||
+            p.category.toLowerCase() === filter.toLowerCase()
+        );
+        list.slice(0, limit).forEach((project, index) => {
+          const card = document.createElement("div");
+          card.className =
+            "project-card relative group opacity-0 translate-y-6 transform scale-95 transition-all duration-700 rounded-xl overflow-hidden shadow-md hover:shadow-pink-500/30 bg-white/70 dark:bg-black/50 border border-gray-200 dark:border-gray-800";
+          const imgSrc =
+            project.images[0] ||
+            "https://via.placeholder.com/1280x720?text=No+Image";
+          card.innerHTML = `
+            <div class="aspect-video w-full overflow-hidden relative">
+              <img src="${imgSrc}" alt="${
+            project.title
+          }" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col items-center justify-end opacity-0 group-hover:opacity-100 transition duration-500 p-6">
+                <h4 class="text-lg font-medium text-white mb-4">${
+                  project.title
+                }</h4>
+                <div class="flex gap-4">
+                  <a onclick="openProject(${projects.indexOf(
+                    project
+                  )})" class="cursor-pointer w-10 h-10 flex items-center justify-center rounded-full border border-white/30 text-white hover:text-pink-400 hover:border-pink-400 transition">
+                    <i class="fa-solid fa-link"></i>
+                  </a>
+                  <a href="${
+                    project.github
+                  }" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border border-white/30 text-white hover:text-pink-400 hover:border-pink-400 transition">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+          projectGrid.appendChild(card);
+          setTimeout(() => {
+            card.classList.remove("opacity-0", "translate-y-6", "scale-95");
+            card.classList.add("opacity-100", "translate-y-0", "scale-100");
+          }, index * 150);
+        });
+
+        // handle tombol show more
+        const btn = document.getElementById("toggleProjectsBtn");
+        if (list.length > SHOW_LIMIT) {
+          btn.classList.remove("hidden");
+          btn.dataset.state = limit === Infinity ? "expanded" : "collapsed";
+          btn.textContent = limit === Infinity ? "Show Less ↑" : "Show More ↓";
+        } else {
+          btn.classList.add("hidden");
+        }
+      }
+
+      // initial render
+      renderProjects("all", SHOW_LIMIT);
+
+      // filter events
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".filter-btn")
+            .forEach((b) =>
+              b.classList.remove(
+                "bg-pink-600",
+                "text-white",
+                "shadow",
+                "active"
+              )
+            );
+          btn.classList.add("bg-pink-600", "text-white", "shadow", "active");
+          const filter = btn.getAttribute("data-filter");
+          renderProjects(filter, SHOW_LIMIT);
+        });
+      });
+
+      // show more / less
+      document
+        .getElementById("toggleProjectsBtn")
+        .addEventListener("click", (e) => {
+          const active =
+            document.querySelector(".filter-btn.active") ||
+            document.querySelector('[data-filter="all"]');
+          const filter = active.getAttribute("data-filter") || "all";
+          const state = e.currentTarget.dataset.state || "collapsed";
+          if (state === "collapsed") renderProjects(filter, Infinity);
+          else renderProjects(filter, SHOW_LIMIT);
+        });
+
+      // ✅ Modal logic
+      let currentImageIndex = 0;
+      let currentProject = null;
+      let slideInterval;
+
+      function updateModalContent() {
+        const img = document.getElementById("modalImage");
+        img.classList.add("opacity-0");
+        setTimeout(() => {
+          img.src = currentProject.images[currentImageIndex];
+          img.onload = () => img.classList.remove("opacity-0");
+        }, 200);
+
+        document.getElementById("modalTitle").innerText =
+          currentProject.title || "";
+        document.getElementById("modalDesc").textContent =
+          currentProject.desc || "";
+        document.getElementById("modalDemo").href = currentProject.demo || "#";
+        document.getElementById("modalGithub").href =
+          currentProject.github || "#";
+
+        // tech
+        const techContainer = document.getElementById("modalTech");
+        techContainer.innerHTML = (currentProject.tech || [])
+          .map(
+            (t) =>
+              `<li class="px-3 py-1 bg-pink-500/20 text-pink-700 dark:text-pink-300 rounded-lg">${t}</li>`
+          )
+          .join("");
+
+        // features
+        const featuresContainer = document.getElementById("modalFeatures");
+        featuresContainer.innerHTML = (currentProject.features || [])
+          .map((f) => `<li>${f}</li>`)
+          .join("");
+
+        highlightDots();
+      }
+
+      function renderDots() {
+        const dotsContainer = document.getElementById("modalDots");
+        dotsContainer.innerHTML = "";
+        (currentProject.images || []).forEach((_, i) => {
+          const dot = document.createElement("span");
+          dot.className =
+            "w-3 h-3 rounded-full bg-gray-400 dark:bg-gray-600 cursor-pointer hover:bg-pink-500 transition";
+          dot.addEventListener("click", () => {
+            currentImageIndex = i;
+            updateModalContent();
+            resetSlideInterval();
+          });
+          dotsContainer.appendChild(dot);
+        });
+        highlightDots();
+      }
+
+      function highlightDots() {
+        const dots = document.getElementById("modalDots").children;
+        Array.from(dots).forEach((dot, i) => {
+          dot.classList.toggle("bg-pink-500", i === currentImageIndex);
+          dot.classList.toggle("bg-gray-400", i !== currentImageIndex);
+          dot.classList.toggle("dark:bg-gray-600", i !== currentImageIndex);
+        });
+      }
+
+      function nextImage() {
+        currentImageIndex =
+          (currentImageIndex + 1) % currentProject.images.length;
+        updateModalContent();
+        resetSlideInterval();
+      }
+      function prevImage() {
+        currentImageIndex =
+          (currentImageIndex - 1 + currentProject.images.length) %
+          currentProject.images.length;
+        updateModalContent();
+        resetSlideInterval();
+      }
+      function resetSlideInterval() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextImage, 5000);
+      }
+
+      // expose ke global untuk dipanggil dari HTML
+      window.openProject = function (index) {
+        currentProject = projects[index];
+        if (!currentProject) return;
+        currentImageIndex = 0;
+        updateModalContent();
+        renderDots();
+        const modal = document.getElementById("projectModal");
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        slideInterval = setInterval(nextImage, 5000);
+      };
+      window.closeModal = function () {
+        const modal = document.getElementById("projectModal");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        clearInterval(slideInterval);
+        currentProject = null;
+      };
+      window.nextImage = nextImage;
+      window.prevImage = prevImage;
+
+      // klik di luar modal untuk close
+      document.getElementById("projectModal").addEventListener("click", (e) => {
+        if (e.target.id === "projectModal") window.closeModal();
+      });
+      // ESC untuk close
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && currentProject) window.closeModal();
+      });
+//form
+      const form = document.getElementById("contactForm");
+      const message = document.getElementById("formMessage");
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault(); // cegah reload halaman
+
+        const data = new FormData(form);
+        try {
+          await fetch(form.action, {
+            method: "POST",
+            body: data,
+          });
+          message.classList.remove("hidden");
+          form.reset(); // kosongkan form
+        } catch (error) {
+          message.textContent = "Gagal mengirim, coba lagi.";
+          message.classList.remove("hidden");
+          message.classList.replace("text-green-400", "text-red-400");
+        }
+      });
+    </script>
+  </body>
 </html>
